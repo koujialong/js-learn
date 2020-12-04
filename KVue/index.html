@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="root">
+        <div>name:{{name}}<span>----age:{{age}}</span></div>
+        <div>{{info.desc}}<div>{{info.detail}}</div></div>
+        <div>{{books}}</div>
+    </div>
+    <script src="./src/watcher.js"></script>
+    <script src="./src/Dep.js"></script>
+    <script src="./src/vnode.js"></script>
+    <script src="./src/compiler.js"></script>
+    <script src="./src/kvue.js"></script>
+    <script src="./src/initdata.js"></script>
+    <script src="./src/initrender.js"></script>
+    <script>
+        let app=new KVue({
+            el:'#root',
+            data:{
+                name:"寇佳龙",
+                age:27,
+                info:{
+                    desc:"测试多级参数",
+                    detail:"测试多级标签"
+                },
+                books:['三国演义','水浒传','西游记','红楼梦']
+            },
+            methods:{
+
+            },
+            mounted(){
+                // console.log(this._data.books)
+                this._data.name="lalal"
+                this._data.age=1000
+                this._data.info.desc='修改了'
+                this._data.books.push("哈利波特")
+                console.log(this)
+                this._data.books=['a','b','c']
+            }
+        })
+    </script>
+</body>
+</html>
